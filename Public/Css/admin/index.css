@@ -1,0 +1,35 @@
+
+td {
+    width: 20%;
+}
+
+th {
+    text-align: center;
+    line-height: 35px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+}
+
+table {
+    border: 1px solid #aaa;
+}
+
+/*.page a {*/
+
+    /*color: #fff;*/
+
+    /*font-size: 14px;*/
+
+    /*text-decoration: none;*/
+
+    /*border: 1px #000 solid;*/
+
+    /*padding: 2px 7px;*/
+
+    /*background: #000;*/
+
+    /*margin: -5px;*/
+/*}*/
+

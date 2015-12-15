@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" type="text/css" href="__PLUGINS__bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="__CSS__Home/find.css">
+    <script type="text/javascript" src="__PLUGINS__jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="__JS__Home/find.js"></script>
+    <title>寻找</title>
+</head>
+<body>
+<div style="width:80%; height:40px; top:20px; left:10%; position:fixed; z-index:100;">
+			<span style="float:left;">
+				<img class="img-rounded" src="__IMAGES__Images/logo.png">
+			</span>
+    <span>{$buy_res}</span>
+			<span>
+				<form class="form-inline" action="__SELF__" method="post" enctype="multipart/form-data">
+                    <input type="text" class="form-control" style="width:250px;" id="text" name="name"/>
+                    <input type="text" class="form-control" style="width:120px;display:none;" id="text1"
+                           name="name1"/><span style="font-size:25px; display:none;" id="span">~</span>
+                    <input type="text" class="form-control" style="width:120px;display:none;" id="text2" name="name2"/>
+                    <select name="type" class="form-control" id="type">
+                        <option value="effect">品牌</option>
+                        <option value="price">价格(万)</option>
+                        <option value="type">车型</option>
+                        <option value="car_num">月销量(辆)</option>
+                    </select>
+                    <input type="submit" class="btn btn-warning" id="find" value="查找"/>
+                </form>
+			</span>
+</div>
+<div style=" margin:0px auto;margin-top:115px; width:80%;" id="carshow">
+    <foreach name="info" item="vo">
+        <a href="info?id={$vo.id}&effect={$vo.effect}&type={$vo.type}">
+            <div style="width:33%; height:170px; float:left;">
+						<span style="width:210px; height:120px; float:left;">
+							<img class="img-rounded" id="img-rounded" src="__IMAGES__{$vo.image}">
+							<div style="display:block;">
+                                <h3><B>{$vo.type}<br/>价格:{$vo.price}万</B></h3>
+                            </div>
+						</span>
+						<span style="width:100px;height:140px; float:left; margin:20px;">
+							<div style="width:100px; height:80px;">
+                                {$vo.intro}
+                            </div>
+							<div style="display:block;line-height:30px; margin-top:30px;">
+                                <B>月销量:{$vo.car_num}</B>
+                            </div>
+						</span>
+            </div>
+        </a>
+    </foreach>
+</div>
+<div>
+    <h1>{$result}</h1>
+</div>
+<iframe src="__APP__/Home/index/stern"></iframe>
+</body>
+</html>

@@ -1,0 +1,54 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+    background: #ddd;
+}
+
+#content {
+    width: 80%;
+    margin: 5% auto;
+}
+
+a, #carshow a {
+    color: #333;
+}
+
+a:hover {
+    color: #900;
+    text-decoration: none;
+}
+
+ul li {
+    text-align: left;
+    width: 15%;
+    cursor: pointer;
+    line-height: 50px;
+}
+
+.nav {
+    font-size: 19px;
+    font-weight: 700;
+    display: block;
+    float: left;
+}
+
+.nav li {
+    text-align: left;
+    list-style: none;
+    line-height: 30px;
+    width: 80%;
+    cursor: pointer;
+    color: #333;
+}
+
+.nav div {
+    display: none;
+    background: #ddd;
+}
+
+iframe {
+    width: 80%;
+    height: 180px;
+    border: 0px solid #fff;
+}

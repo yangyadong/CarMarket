@@ -1,0 +1,35 @@
+<extend name="Public:base"/>
+<block name="style">
+    <link rel="stylesheet" type="text/css" href="__CSS__admin/sold_market_pro.css">
+</block>
+<block name="script">
+    <script type="text/javascript" src="__JS__admin/sold.js"></script>
+</block>
+<block name="common">
+    <div id="show_nav" style="display:none;" one="1" two="2"></div>
+    <h1>物品下架</h1>
+    <span id="sold_res"></span>
+    <table style="width:80%; margin:0px auto;" cellspacing="0" tr="{$num}">
+        <tr>
+            <th>品牌</th>
+            <th>型号</th>
+            <th>价格(万)</th>
+            <th>图片</th>
+            <th>月销量</th>
+            <th>下架</th>
+        </tr>
+        <foreach name="show_car" item="vo">
+            <tr>
+                <td>{$vo.effect}</td>
+                <td>{$vo.type}</td>
+                <td>{$vo.price}</td>
+                <td><img src="__IMAGES__{$vo.image}" style="width:100px;"></td>
+                <td>{$vo.car_num}</td>
+                <td>
+                    <input type="submit" url="{:U('/Admin/Goods/sold')}" class="sold" Deid="{$vo.id}" value="下架">
+                </td>
+            </tr>
+        </foreach>
+    </table>
+    <div class="page" onclick="return false">{$show_page}</div>
+</block>

@@ -1,0 +1,47 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+    background: #f7f7f7;
+}
+
+a {
+    color: #999;
+}
+
+a:hover {
+    color: #f00;
+    text-decoration: none;
+}
+
+#input {
+    font-size: 20px;
+    width: 55%;
+    margin: 5% auto;
+}
+
+#username, #password, #look_password {
+    width: 420px;
+    height: 40px;
+}
+
+#elect span {
+    font-size: 15px;
+    height: 30px;
+    margin-top: 20px;
+}
+
+.submit {
+    width: 70%;
+    line-height: 30px;
+    margin-top: 25px;
+}
+
+#logo {
+    margin-top: 7%;
+}
+
+#name, #pwd, #vei,#admin_res {
+    color: red;
+    display: none;
+}

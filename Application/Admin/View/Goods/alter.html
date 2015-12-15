@@ -1,0 +1,35 @@
+<extend name="Public:base"/>
+<block name="style">
+    <link rel="stylesheet" type="text/css" href="__CSS__admin/alter.css">
+</block>
+<block name="script">
+    <script type="text/javascript" src="__JS__admin/alter.js"></script>
+</block>
+<block name="common">
+    <div id="show_nav" style="display:none;" one="1" two="3"></div>
+    <h1>修改物品信息</h1>
+    <span display="none" style="color: #f00;font-size: 25px;" id="sold_res"></span>
+    <input type="hidden" id="url" value="{:U('/Admin/Goods/alter')}">
+    <table cellspacing="0" tr="{$num}">
+        <tr>
+            <th>品牌</th>
+            <th>型号</th>
+            <th>价格(万)</th>
+            <th>简介</th>
+            <th>修改</th>
+        </tr>
+        <foreach name="show_car" item="vo">
+            <tr>
+                <td><input type="text" class="effect" name="effect" value="{$vo.effect}"></td>
+                <td><input type="text" class="type" name="type" value="{$vo.type}"></td>
+                <td><input type="text" class="price" name="price" value="{$vo.price}"></td>
+                <td><textarea rows="2" class="intro" name="intro" cols="30">{$vo.intro}</textarea></td>
+                <td>
+                    <input type="hidden" class="alid" name="id" value="{$vo.id}">
+                    <input type="submit" onclick="return false" class="sub" value="修改信息">
+                </td>
+            </tr>
+        </foreach>
+    </table>
+    <div class="page" onclick="return false">{$show_page}</div>
+</block>

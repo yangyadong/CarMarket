@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>{$title}</title>
+    <link rel="stylesheet" type="text/css" href="__PLUGINS__bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="__CSS__admin/base.css">
+    <script type="text/javascript" src="__PLUGINS__jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="__PLUGINS__bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="__JS__admin/base.js"></script>
+    <block name="style"></block>
+    <block name="script"></block>
+</head>
+<body>
+<div id="header">
+    <block name="head">
+        <div id="head">
+            <div id="img">
+                <a href="__APP__/Admin/index/index">
+                    <img class="img-rounded" width="300px" src="__IMAGES__Images/logo.png">
+                </a>
+            </div>
+            <div id="title">
+                <h1>易车后台管理系统</h1>
+            </div>
+            <div id="ad">
+                <B>
+                    当前用户:{$adname_log}
+                    <a onclick="return confirm('您确定要登出?')" href="__MODULE__/user/logout" target="content">注销</a>
+                </B>
+            </div>
+        </div>
+    </block>
+</div>
+<div>
+    <div id="left">
+        <block name="left">
+            <h1>{$login_on}</h1>
+
+            <div id="nav">
+                <ul style="float:left;">
+                    <volist name="comp" id="vo">
+                        <switch name="key">
+                            <case value="1">
+                                <li id='product'>
+                                    <span class="glyphicon glyphicon-collapse-down"></span>
+                                    产品管理
+                                </li>
+                                <ol style='display:none;'>
+                                    <volist name="vo" id="item">
+                                        <switch name="item">
+                                            <case value="1">
+                                                <li>
+                                                    <a href='__MODULE__/Goods/upload' target='content'>
+                                                        上传物品
+                                                    </a>
+                                                </li>
+                                            </case>
+                                            <case value="2">
+                                                <li>
+                                                    <a href='__MODULE__/Goods/sold' target='content'>
+                                                        下架物品
+                                                    </a>
+                                                </li>
+                                            </case>
+                                            <case value="3">
+                                                <li>
+                                                    <a href='__MODULE__/Goods/alter' target='content'>
+                                                        修改物品
+                                                    </a>
+                                                </li>
+                                            </case>
+                                        </switch>
+                                    </volist>
+                                </ol>
+                            </case>
+                            <case value="2">
+                                <li id='sell'>
+                                    <span class="glyphicon glyphicon-collapse-down"></span>
+                                    销售管理
+                                </li>
+                                <ol style='display:none;'>
+                                    <volist name="vo" id="item">
+                                        <switch name="item">
+                                            <case value="1">
+                                                <li>
+                                                    <a href='__MODULE__/Goods/plan' target='content'>
+                                                        物品展示
+                                                    </a>
+                                                </li>
+                                            </case>
+                                            <case value="2">
+                                                <li>
+                                                    <a href='__MODULE__/Goods/market' target='content'>
+                                                        物品恢复
+                                                    </a>
+                                                </li>
+                                            </case>
+                                            <case value="3">
+                                                <li>
+                                                    <a href='__MODULE__/Goods/profit' target='content'>
+                                                        物品统计
+                                                    </a>
+                                                </li>
+                                            </case>
+                                        </switch>
+                                    </volist>
+                                </ol>
+                            </case>
+                            <case value="3">
+                                <li id='adnew'>
+                                    <span class="glyphicon glyphicon-collapse-down"></span>
+                                    广告管理
+                                </li>
+                                <ol style='display:none;'>
+                                    <volist name="vo" id="item">
+                                        <switch name="item">
+                                            <case value="1">
+                                                <li>
+                                                    <a href='__MODULE__/Goods/time' target='content'>
+                                                        广告时间
+                                                    </a>
+                                                </li>
+                                            </case>
+                                            <case value="2">
+                                                <li>
+                                                    <a href='__MODULE__/Goods/activity' target='content'>
+                                                        活动管理
+                                                    </a>
+                                                </li>
+                                            </case>
+                                            <case value="3">
+                                                <li>
+                                                    <a href='__MODULE__/Goods/type' target='content'>
+                                                        活动类型
+                                                    </a>
+                                                </li>
+                                            </case>
+                                        </switch>
+                                    </volist>
+                                </ol>
+                            </case>
+                            <case value="4">
+                                <li id='sale'>
+                                    <span class="glyphicon glyphicon-collapse-down"></span>
+                                    权限 (新)
+                                </li>
+                                <ol style='display:none;'>
+                                    <volist name="vo" id="item">
+                                        <switch name="item">
+                                            <case value="1">
+                                                <li>
+                                                    <a href='__MODULE__/Sale/client' target='content'>
+                                                        职位管理
+                                                    </a>
+                                                </li>
+                                            </case>
+                                            <case value="2">
+                                                <li>
+                                                    <a href='__MODULE__/Sale/maintain' target='content'>
+                                                        添加员工
+                                                    </a>
+                                                </li>
+                                            </case>
+                                            <case value="3">
+                                                <li>
+                                                    <a href='__MODULE__/Sale/statistics' target='content'>
+                                                        员工列表
+                                                    </a>
+                                                </li>
+                                            </case>
+                                        </switch>
+                                    </volist>
+                                </ol>
+                            </case>
+                            <case value="5">
+                                <li id='system'>
+                                    <span class="glyphicon glyphicon-collapse-down"></span>
+                                    系统管理
+                                </li>
+                                <ol style='display:none;'>
+                                    <volist name="vo" id="item">
+                                        <switch name="item">
+                                            <case value="1">
+                                                <li>
+                                                    <a href='__MODULE__/System/staff' target='content'>
+                                                        职员管理
+                                                    </a>
+                                                </li>
+                                            </case>
+                                            <case value="2">
+                                                <li>
+                                                    <a href='__MODULE__/System/jurisdiction' target='content'>
+                                                        权限管理
+                                                    </a>
+                                                </li>
+                                            </case>
+                                        </switch>
+                                    </volist>
+                                </ol>
+                            </case>
+                        </switch>
+                    </volist>
+                </ul>
+            </div>
+        </block>
+    </div>
+    <div id="common">
+        <block name="common">内容</block>
+    </div>
+    <div style="clear: both;"></div>
+</div>
+<div id="foot">
+    <block name="foot">
+        版权所有版录必究
+    </block>
+</div>
+</body>
+</html>

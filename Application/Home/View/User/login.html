@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" type="text/css" href="__PLUGINS__bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="__CSS__Home/login.css">
+    <script type="text/javascript" src="__PLUGINS__jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="__PLUGINS__bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="__JS__Home/login.js"></script>
+    <title>登陆</title>
+</head>
+<body>
+<div style="width:60%; margin:5% auto; height:60%;">
+    <a href="__MODULE__/index/index"><img src="__IMAGES__Images/logo_or.png"></a>
+
+    <h1 style="font-size:30px; font-weight: bold; margin-top:30px;">
+        <B>一个帐号，玩转所有汽车服务！</B>
+    </h1>
+
+    <p>
+        <a href="">易车</a>,
+        <a href="">惠买车</a>,
+        <a href="">易车商城</a>,
+        <a href="">易车二手车</a>,
+        <a href="">移动应用</a>
+    </p>
+
+    <p style="color:red;">{$result}</p>
+
+    <form class="form-inline" id="input" action="__SELF__" method="post" enctype="multipart/form-data">
+        <div class="form-group has-success has-feedback">
+            <label class="control-label" for="username">账户:</label>
+            <input type="Email" name="email" class="form-control" id="username">
+            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        </div>
+        <br/>
+
+        <div class="form-group has-success has-feedback" style="margin-top:20px;">
+            <label class="control-label" for="password">密码:</label>
+            <input type="password" class="form-control" name="password" id="password">
+            <input type="text" id="look_password" class="form-control" style="display:none;">
+            <span class="glyphicon glyphicon-eye-open form-control-feedback"> </span>
+        </div>
+        <div class="form-group has-success has-feedback" style="margin-top:20px;">
+            <label class="control-label" for="auth">验证码:</label>
+            <input name="auth" type="text" id="auth" class="form-control"/>
+            <img src="verify" border="0" title="点击刷新" alt="验证码" id="authImg"
+                 onClick="this.src=this.src+'?'+Math.random()"/>
+        </div>
+        <div id="elect">
+					<span style="float:left; margin-left:5%; color:#333;">
+						<input type="checkbox" id="checkbox">
+						<label class="control-label" for="checkbox">下次自动登录:</label>
+					</span>
+					<span style="float:right; margin-right: 5%;">
+						<a href="">忘记密码 </a> | 
+						<a href="register"> 注册</a>
+					</span>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary submit">登录</button>
+        </div>
+    </form>
+    <iframe src="__APP__/home/index/stern"></iframe>
+</div>
+</body>
+</html>

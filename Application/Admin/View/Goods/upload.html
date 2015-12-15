@@ -1,0 +1,65 @@
+<extend name="Public:base"/>
+<block name="style">
+    <link rel="stylesheet" type="text/css" href="__CSS__admin/upload.css">
+</block>
+<block name="script">
+    <script type="text/javascript">
+        $(function(){
+            $("#write_price").focusout(function(){
+                var write_price = $(this).val();
+                var per =  /^[\0][0-9]+$/;
+                if(write_price == '' || !per.test(write_price)){
+                    $(".show_new").slideToggle(1000,function(){
+                        setTimeout('$(".show_new").slideToggle(1000)',3000);
+                    })
+                    $(this).val('');
+                    $(this).focus();
+                }
+            })
+            $("#sub").click(function(){
+                if($("#file").val() == ''){
+                    alert('请选择图片');
+                    return false;
+                }
+            });
+            if($("#result_new").html() == '上传成功'){
+                setTimeout("window.location.href = 'plan'",3000);
+            }
+        })
+    </script>
+</block>
+<block name="common">
+    <div id="show_nav" style="display:none;" one="1" two="1"></div>
+    <form action="__SELF__" method="post" enctype="multipart/form-data">
+        <h1>上传物品</h1>
+        <h2 style="color:#faa;" id="result_new">{$result}</h2>
+        <span class="show_new">价格不能为空只能为有效纯数字</span>
+        <table>
+            <tr>
+                <td style="width:19%;">
+                    品牌:
+                </td>
+                <td style="width:100px;">
+                    <input type="text" name="effect"/>
+                </td>
+            </tr>
+            <tr>
+                <td>型号:</td>
+                <td><input type="text" name="type"/></td>
+            </tr>
+            <tr>
+                <td>简介:</td>
+                <td><input type="text" name="intro"/></td>
+            </tr>
+            <tr>
+                <td>价格(万):</td>
+                <td><input type="text" id="write_price" name="price"/></td>
+            </tr>
+            <tr>
+                <td>图片:</td>
+                <td><input type="file" id="file" name="image"/></td>
+            </tr>
+        </table>
+        <input type="submit" id="sub" value="提 交" id="up"/>
+    </form>
+</block>

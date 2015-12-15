@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" type="text/css" href="__PLUGINS__bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="__CSS__Home/register.css">
+    <script type="text/javascript" src="__PLUGINS__jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="__PLUGINS__bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="__JS__Home/register.js"></script>
+    <title>注册</title>
+</head>
+<body>
+<div id="head">
+			<span style="float:left;">
+				<img src="__IMAGES__Images/logo_or.png">
+			</span>
+			<span class="login">			
+				已有帐号,
+				<a href="login">马上登录</a>
+			</span>
+</div>
+<hr/>
+<div id="content"><br/>
+
+    <h3 style="font-size:28px;"><B>注册帐号，玩转所有汽车服务！</B></h3>
+
+    <p id="new" style="color:red; margin-bottom:-25px; display:none;">注册成功</p>
+
+    <form class="form-inline" id="input">
+        <div class="form-group">
+            <label for="email"> 账 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;户 :</label>
+            <input type="Email" class="form-control" id="email" name="email"/>
+        </div>
+        <div class="form-group">
+            <label for="password"> 密 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码 :</label>
+            <input type="Password" id="password" name="password" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label for="password1">确认密码:</label>
+            <input type="Password" class="form-control" name="password1" id="password1"/>
+        </div>
+        <input type="checkbox" id="checkbox" checked="checked"/>
+        <label class="control-label" for="checkbox" style="font-size:18px;color:#aaa;">
+            我已经看过并同意《网络服务协议》
+        </label>
+        <input type="submit" onclick="return false" id="reg" url="{:U('/Home/User/save')}"
+               class="btn btn-warning submit"/>
+    </form>
+</div>
+</body>
+</html>

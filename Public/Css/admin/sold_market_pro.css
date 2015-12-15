@@ -1,0 +1,27 @@
+
+td {
+    width: 16%;
+}
+
+th {
+    text-align: center;
+    line-height: 35px;
+}
+
+th, td {
+    font-size: 20px;
+    border: 1px solid #ddd;
+}
+
+table {
+    border: 1px solid #aaa;
+}
+
+#sold_res{
+    color: #f00;
+    font-size: 25px;
+}
+input{
+    border: 0px solid #fff;
+    background: #fff;
+}

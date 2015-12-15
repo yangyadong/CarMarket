@@ -1,0 +1,97 @@
+<extend name="Public:base"/>
+<block name="style">
+    <link rel="stylesheet" type="text/css" href="__CSS__admin/staff.css">
+</block>
+<block name="script">
+    <script type="text/javascript">
+        $(function () {
+            //职员状态(status)0为正常1为禁用
+            function type(){
+                var per = $("#per").html();
+                $(".delete").find('span').removeClass();
+                $(".delete").prev('td').find('a').css('color','black');
+                for(i = 0; i < per; i++){
+                    if($(".delete").eq(i).find('span').attr('status')==0){
+                        //启用状态
+                        $(".delete").eq(i).find('span').addClass("glyphicon glyphicon-ok-circle greet");
+                        $(".delete").eq(i).find('button').attr('title','点击禁用');
+                    }else{
+                        //禁用状态
+                        $(".delete").eq(i).find('span').addClass("glyphicon glyphicon-remove-circle red");
+                        $(".delete").eq(i).prev('td').find('a').removeAttr('href');
+                        $(".delete").eq(i).prev('td').find('a').css('color','grey');
+                        $(".delete").eq(i).find('button').attr('title','已禁用点击启用');
+                    }
+                }
+            }
+            type();
+
+            //是否禁用(开启)
+            $(".delete").click(function () {
+                if(!confirm('确定要更改状态?')){
+                    return;
+                }
+                var job_num = $(this).attr("regId");
+                var url = $(this).attr("url")
+                var status = $(this).find('span').attr('status');
+                $.post(url, {job_num: job_num,status:status}, function (data) {
+                    if (data == 'ok') {
+                        window.location.src = history.go(0);
+                    } else {
+                        $("#no_off").fadeIn(1000,function(){
+                            setTimeout('$("#no_off").fadeOut(1000)',2000);
+                        });
+                    }
+                })
+            });
+
+            //无刷新分页
+            $(document).on('click', '.page>div>ul>li>a', function(){
+                var tr = $("table").attr("tr");
+                var url = $(this).attr("href");
+                $.get(url,function(data){
+                $(".page").html(data[1]);
+                $("table").find("tr").show();
+                for(i = 0; i < data[0].length; i++){
+                    var that = $("table").find("tr").eq(i+1).children("td");
+                    that.eq(0).html(data[0][i]["name"]);
+                    that.eq(1).html(data[0][i]["position"]);
+                    that.eq(2).find("a").attr("href",'jurisdiction?job_num='+data[0][i]["job_num"]+'&name='+data[0][i]["name"]+'');
+                    that.eq(3).attr("regId",data[0][i]["job_num"]);
+                    $(".delete").eq(i).find('span').attr("status",data[0][i]["status"]);
+                }
+                for (k = data[0].length; k <= tr; k++) {
+                    $("table").find("tr").eq(k+1).hide();
+                }
+                    type();
+                })
+            });
+        })
+    </script>
+</block>
+<block name="common">
+    <div id="show_nav" style="display:none;" one="5" two="1"></div>
+    <span id="per" style="display:none;">{$per}</span>
+    <span id="no_off" style="display:none; color: red;">操作失败</span>
+    <table cellspacing="0" tr="{$num}">
+        <tr>
+            <th>姓名</th>
+            <th>职位</th>
+            <th>权限</th>
+            <th>状态</th>
+        </tr>
+        <foreach name="position" item="vo">
+            <tr>
+                <td>{$vo.name}</td>
+                <td>{$vo.position}</td>
+                <td><a color="#000" href="__MODULE__/System/jurisdiction?job_num={$vo.job_num}&name={$vo.name}"><b>分配权限</b></a></td>
+                <td class="delete" regId="{$vo.job_num}" url={:U('/Admin/System/staff')}>
+                    <button type="button" class="btn btn-default" id="show_new" title="">
+                        <span status="{$vo.status}" style="font-size: 20px; "></span>
+                    </button>
+                </td>
+            </tr>
+        </foreach>
+    </table>
+    <div class="page" onclick="return false">{$show_page}</div>
+</block>

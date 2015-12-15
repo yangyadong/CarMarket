@@ -1,0 +1,59 @@
+<extend name="Public:base"/>
+<block name="style">
+    <link rel="stylesheet" type="text/css" href="__CSS__admin/jurisdiction.css">
+</block>
+<block name="script">
+    <script type="text/javascript" src="__JS__admin/jurisdiction.js"></script>
+</block>
+<block name="common">
+    <div id="show_nav" style="display:none;" one="5" two="2"></div>
+    <h1>权限管理</h1>
+    <h3>{$result}</h3>
+    <table cellspacing="0">
+        <form>
+            姓名:<input type="text" name="name" id="add_save" style="width:100px;" value="{$name}"/>
+            <input type="hidden" value="{$job_num}" id="Gjob_num"/>
+            职位:<select name="position" id="add_save_position">
+            <option value="staffaa" selected="selected">请选择职位</option>
+            <option value="top_manager">总经理</option>
+            <option value="director">主管</option>
+            <option value="manager">部门经理</option>
+            <option value="staff">员工</option>
+        </select>
+            <tr>
+                <td class="hash">
+                    产品管理<input type="checkbox" value="{$goods}" id="goods"/>
+                    <li><input type="checkbox" value="{$upload}" id="upload"/>上传物品</li>
+                    <li><input type="checkbox" value="{$sold}" id="sold"/>下架物品</li>
+                    <li><input type="checkbox" value="{$alter}" id="alter"/>修改物品</li>
+                </td>
+                <td class="hash">
+                    销售管理<input type="checkbox" value="{$market1}" id="market1"/>
+                    <li><input type="checkbox" value="{$plan}" id="plan"/>物品展示</li>
+                    <li><input type="checkbox" value="{$market}" id="market"/>物品恢复</li>
+                    <li><input type="checkbox" value="{$profit}" id="profit"/>物品统计</li>
+                </td>
+                <td class="hash">
+                    广告管理<input type="checkbox" value="{$Glad}" id="Glad"/>
+                    <li><input type="checkbox" value="{$time}" id="time"/>广告时间</li>
+                    <li><input type="checkbox" value="{$activity}" id="activity"/>活动管理</li>
+                    <li><input type="checkbox" value="{$type}" id="type"/>活动类型</li>
+                </td>
+            </tr>
+            <tr>
+                <td class="hash">
+                    售后服务<input type="checkbox" value="{$afertSale}" id="afertSale"/>
+                    <li><input type="checkbox" value="{$client}" id="client"/>客户管理</li>
+                    <li><input type="checkbox" value="{$maintain}" id="maintain"/>添加员工</li>
+                    <li><input type="checkbox" value="{$statistics}" id="statistics"/>员工列表</li>
+                </td>
+                <td class="hash">
+                    系统管理<input type="checkbox" value="{$systems}" id="systems"/>
+                    <li><input type="checkbox" value="{$staff}" id="staff"/>职员管理</li>
+                    <li><input type="checkbox" value="{$jurisdiction}" id="jurisdiction"/>权限管理</li>
+                </td>
+            </tr>
+            <input type="submit" onclick="return false" id="sub" value="提交"/>
+        </form>
+    </table>
+</block>

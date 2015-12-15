@@ -1,0 +1,110 @@
+<extend name="Public:base"/>
+<block name="style">
+	<link rel="stylesheet" type="text/css" href="__CSS__admin/jurisdiction.css">
+</block>
+<block name="script">
+	<script type="text/javascript">
+		//数据处理
+		function trandata() {
+		    var data = "";
+		    var k = 1;
+		    for (i = 0; i < 5; i++) {
+		        for (j = 1; j < 4; j++) {
+		            if ($(".hash").eq(i).find("input").eq(j).is(":checked")) {			//判断复选框是否选中
+		                data = data + k + '-' + j + ',';
+		            }
+		        }
+		        k++;
+		    }
+		    return data;
+		};
+
+		//提示信息设置输出
+		function show_new(info){
+			$("h3").html(info);
+		    $("h3").fadeIn();
+		    setTimeout("$('h3').fadeOut()",3000);
+		}
+
+		$(function () {
+
+		    $("#sub").click(function () {
+		        
+		        if ($("#add_save").val() != '') {
+		            var add_save = $("#add_save").val();
+		        } else {
+		            alert('请输入新职位名称');
+		            return;
+		        }
+		        var comp_data = trandata();
+		        if(comp_data == ""){
+		        	alert("请选择权限");
+		        	return;
+		        }
+		        $.ajax({
+		            url: 'client',
+		            dataType: "json",
+		            type: 'post',
+		            data: ({competence: comp_data, position: add_save}),
+		            success: function (data) {
+		                if (data == 'false') {
+		                    var info = "操作失败";
+		                    show_new(info);
+		                }else if(data == 'add'){
+		                	var info = "新职位创建成功";
+		                    show_new(info);
+		                }else{
+		                	var info = "修改成功";
+		                    show_new(info);
+		                }
+		            }
+		        });
+		    });
+		})
+	</script>
+</block>
+<block name="common">
+	<div id="show_nav" style="display:none;" one="4" two="1"></div>
+	<h1>创建职位</h1>
+    <h3 style="display:none; color:red"></h3>
+	<table cellspacing="0">
+        <form>
+            创建新职位: <input type="text" name="name" id="add_save" placeholder="请输入职位名称" style="width:150px;" value="{$name}"/>
+        </select>
+            <tr>
+                <td class="hash">
+                    产品管理<input type="checkbox" value="{$goods}" id="goods"/>
+                    <li><input type="checkbox" value="{$upload}" id="upload"/>上传物品</li>
+                    <li><input type="checkbox" value="{$sold}" id="sold"/>下架物品</li>
+                    <li><input type="checkbox" value="{$alter}" id="alter"/>修改物品</li>
+                </td>
+                <td class="hash">
+                    销售管理<input type="checkbox" value="{$market1}" id="market1"/>
+                    <li><input type="checkbox" value="{$plan}" id="plan"/>物品展示</li>
+                    <li><input type="checkbox" value="{$market}" id="market"/>物品恢复</li>
+                    <li><input type="checkbox" value="{$profit}" id="profit"/>物品统计</li>
+                </td>
+                <td class="hash">
+                    广告管理<input type="checkbox" value="{$Glad}" id="Glad"/>
+                    <li><input type="checkbox" value="{$time}" id="time"/>广告时间</li>
+                    <li><input type="checkbox" value="{$activity}" id="activity"/>活动管理</li>
+                    <li><input type="checkbox" value="{$type}" id="type"/>活动类型</li>
+                </td>
+            </tr>
+            <tr>
+                <td class="hash">
+                    权限 (新)<input type="checkbox" value="{$afertSale}" id="afertSale"/>
+                    <li><input type="checkbox" value="{$client}" id="client"/>职位管理</li>
+                    <li><input type="checkbox" value="{$maintain}" id="maintain"/>维修人员</li>
+                    <li><input type="checkbox" value="{$statistics}" id="statistics"/>统计管理</li>
+                </td>
+                <td class="hash">
+                    系统管理<input type="checkbox" value="{$systems}" id="systems"/>
+                    <li><input type="checkbox" value="{$staff}" id="staff"/>职员管理</li>
+                    <li><input type="checkbox" value="{$jurisdiction}" id="jurisdiction"/>权限管理</li>
+                </td>
+            </tr>
+            <input type="submit" onclick="return false" id="sub" value="提交"/>
+        </form>
+    </table>
+</block>

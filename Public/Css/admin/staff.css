@@ -1,0 +1,35 @@
+body {
+    margin: 0px auto;
+    padding: 0px;
+    text-align: center;
+}
+table {
+    width: 80%;
+    margin: 5% auto;
+    font-size: 25px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+}
+th, td {
+    width: 100px;
+    line-height: 40px;
+    border: 1px solid #eee;
+    text-align: center;
+}
+a {
+    color: #000;
+    text-decoration: none;
+}
+a:hover {
+    color: #f77;
+    text-decoration: none;
+}
+.delete {
+    cursor: pointer;
+}
+.red{
+    color: #f33;
+}
+.greet{
+    color: #3f3;
+}

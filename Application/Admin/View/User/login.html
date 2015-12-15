@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" type="text/css" href="__PLUGINS__bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="__CSS__admin/login.css">
+    <script type="text/javascript" src="__PLUGINS__jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="__JS__Admin/login.js"></script>
+    <title>登陆</title>
+</head>
+<body>
+<a href="__MODULE__/index/index">
+    <img src="__IMAGES__Images/logo.png" id="logo"/>
+</a>
+<form class="form-inline" id="input">
+    <div>
+        <span id="name">账户不能为空</span>
+        <span id="pwd">密码不能为空</span>
+        <span id="vei">请输入验证吗</span>
+        <span id="admin_res"></span>
+    </div>
+    <div class="form-group has-success has-feedback">
+        <label class="control-label" for="username">工号:</label>
+        <input type="text" name="name" class="form-control" id="username" value="{$Think.cookie.job_num}">
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+    </div>
+    <br/>
+
+    <div class="form-group has-success has-feedback" style="margin-top:30px;">
+        <label class="control-label" for="password">密码:</label>
+        <input type="password" class="form-control" name="password" id="password" value="{$Think.cookie.password}">
+        <input type="text" id="look_password" class="form-control" style="display:none;">
+        <span class="glyphicon glyphicon-eye-open form-control-feedback"></span>
+    </div>
+    <div class="form-group has-success has-feedback" style="margin-top:30px; margin-left:-100px;">
+        <label class="control-label" for="auth">验证码:</label>
+        <input name="verify" value="{$verify}" type="text" id="auth" class="form-control"/>
+        <img src="verify" border="0" title="点击刷新" alt="验证码" id="authImg" onClick="this.src=this.src+'?'+Math.random()"/>
+    </div>
+    <div id="elect">
+        <span style="float:left; margin-left:20%; color:#333;">
+            <input name="status" type="checkbox" id="automatic">
+            <input type="hidden" value="{$automatic}" id="automatic_res">
+            <label class="control-label" for="automatic">记住密码:</label>
+        </span>
+    </div>
+    <div>
+        <button class="btn btn-primary submit" onclick="return false;" url="{:U('/Admin/User/yz')}" id="submit">登录
+        </button>
+    </div>
+</form>
+<input type="hidden" id="url" value="{:U('/Admin/index/index')}"/>
+</body>
+</html>

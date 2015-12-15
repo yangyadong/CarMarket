@@ -1,0 +1,51 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+    background: #f7f7f7;
+}
+
+#head {
+    width: 50%;
+    margin: 3% auto;
+}
+
+#head .login {
+    float: right;
+    line-height: 65px;
+    font-size: 18px;
+}
+
+hr {
+    border: 2px solid #eee;
+    width: 100%;
+    margin: 0px;
+}
+
+#content {
+    width: 60%;
+    background: #fff;
+    font-size: 20px;
+    height: 500px;
+    margin: 0px auto;
+}
+
+#content div {
+    display: block;
+}
+
+form {
+    line-height: 60px;
+    margin-top: 50px;
+}
+
+#email, #password, #password1, #guard {
+    width: 55%;
+    height: 40px;
+}
+
+.submit {
+    width: 70%;
+    line-height: 30px;
+    font-size: 20px;
+}

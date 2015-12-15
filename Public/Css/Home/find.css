@@ -1,0 +1,22 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+    background: #ddd;
+}
+
+#carshow a, a {
+    color: #333;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #900;
+    text-decoration: none;
+}
+
+iframe {
+    width: 80%;
+    height: 180px;
+    border: 0px solid #fff;
+}

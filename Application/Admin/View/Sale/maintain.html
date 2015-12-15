@@ -1,0 +1,62 @@
+<extend name="Public:base"/>
+<block name="script">
+	<script type="text/javascript">
+	$(function(){
+
+		//提示信息设置输出
+		function show_new(info){
+			$("h3").html(info);
+		    $("h3").fadeIn();
+		    if(info == "添加失败"){
+		    	setTimeout("$('h3').fadeOut()",3000);
+		    }
+		}
+
+
+		$("#sub").on("click",function(){
+			var name = $.trim($('#name').val());
+			if(name == ''){
+				var info = '请输入姓名';
+				show_new(info);
+				$("#name").focus();
+			}else{
+				var position = $("#add_position").val();
+				if (position == 'staffaa') {
+					var info = '请选择职位';
+					show_new(info);
+				}else{
+					$.ajax({
+						url:'maintain',
+						dataType: "json",
+		            	type: 'post',
+						data:({name:name,position:position}),
+						success: function (data) {
+			                if (data == 'false') {
+			                    var info = "添加失败";
+			                    show_new(info);
+			                }else {
+			                	var info = "添加成功,工号为:"+data+"密码:123456";
+			                    show_new(info);
+			                }
+			            }
+					})
+				}
+			}
+		});
+	})
+	</script>
+</block>
+<block name="common">
+	<div id="show_nav" style="display:none;" one="4" two="2"></div>
+	<h1 style="margin-top:5%;">添加新员工</h1>
+	<h3 style="display:none;color:red;">{$res}</h3>
+	<form style="margin-top:8%;">			
+		姓名:<input type="text" id="name" style="width:15%; margin-right:2%;">
+		职位:<select name="position" id="add_position">
+            <option value="staffaa" selected="selected">请选择职位</option>
+            <foreach name="position" item="vo">
+            	<option value="{$vo.id}">{$vo.position}</option>
+            </foreach>
+           <input type="submit" onclick="return false;" id="sub" style="width:10%; margin-left:2%;">
+	</form>
+</block>

@@ -1,0 +1,118 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" type="text/css" href="__CSS__Home/info.css">
+    <script type="text/javascript" src="__PLUGINS__jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="__JS__Home/info.js"></script>
+    <title>汽车信息</title>
+</head>
+<body>
+<div id="center">
+    <div style="width:80%; margin:0px auto;">
+        <div style="height:300px;" class="img_intro">
+            <img src="__IMAGES__{$info.image}" style="width:400px; border-radius: 8px;">
+        </div>
+        <div style="line-height:300px;" class="img_intro">
+            {$info.intro}
+        </div>
+    </div>
+    <div>
+        <div class="prc_num">
+            <h2>价格:{$info.price}万</h2>
+        </div>
+        <div class="prc_num">
+            <form style="line-height:70px;" action="buy" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="id" value="{$info.id}">
+                <input type="hidden" name="car_num" value="{$info.car_num}">
+                数量:
+                <input type="button" id="reduce" value="-">
+                <input type="text" name="num" id="num" value="1" style="width:20px;">
+                <input type="button" id="add" value="+">
+                <input type="submit" value="购买">
+            </form>
+        </div>
+    </div>
+    <div>
+        <form action="comment" method="post" enctype="multipart/form-data">
+            <textarea rows="2" cols="70" name="comment" placeholder="我也说一句..."></textarea>
+            <input type="hidden" name="type" value="{$info.type}">
+            <input type="submit" value="评论" style="height:25px;">
+        </form>
+    </div>
+    <div>
+        <div id="comment" style="height:0px;">
+            <table>
+                <foreach name="comShow" item="vo">
+                    <tr>
+                        <td class="pre">{$vo.pre}</td>
+                        <td class="com">
+									<span class="left">
+										{$vo.comment}
+									</span>
+                            <br/><br/><br/>
+									<span class="right">
+										{$vo.time|date='Y-m-d H:m:s',###}
+									</span>
+                        </td>
+                        <td>
+                            <if condition="$vo.pre eq $name">
+                                <form action="delete" method="post" enctype="multipart/form-data">
+                                    <input type="hidden" value="{$vo.id}" name="delete">
+                                    <input type="submit" value="删除">
+                                </form>
+                            </if>
+                        </td>
+                    </tr>
+                </foreach>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Bootstrap 实例 - 弹出框（Popover）插件</title>
+    <!-- <link rel="stylesheet" type="text/css" href="__CSS__Home/info.css"> -->
+    <script type="text/javascript" src="__PLUGINS__jquery/jquery.min.js"></script>
+   <link href="__PLUGINS__bootstrap/css/bootstrap.min.css" rel="stylesheet">
+   <script src="__PLUGINS__bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container" style="padding: 100px 50px 10px;" >
+   <button type="button" class="btn btn-default" title="Popover title"  
+      data-container="body" data-toggle="popover" data-placement="left" 
+      data-content="左侧的 Popover 中的一些内容">
+      左侧的 Popover
+   </button>
+   <button type="button" class="btn btn-primary" title="Popover title"  
+      data-container="body" data-toggle="popover" data-placement="top" 
+      data-content="顶部的 Popover 中的一些内容">
+      顶部的 Popover
+   </button>
+   <button type="button" class="btn btn-success" title="Popover title"  
+      data-container="body" data-toggle="popover" data-placement="bottom" 
+      data-content="底部的 Popover 中的一些内容">
+      底部的 Popover
+   </button>
+   <button type="button" class="btn btn-warning" title="Popover title"  
+      data-container="body" data-toggle="popover" data-placement="right" 
+      data-content="右侧的 Popover 中的一些内容">
+      右侧的 Popover
+   </button>
+   </div>
+
+   <script>
+   $(function (){ 
+        $("[data-toggle='popover']").tooltip();
+        var aa = $(".btn").eq(0).attr("data-content");
+        alert(aa);
+    });
+   </script>
+</div>
+
+</body>
+</html>

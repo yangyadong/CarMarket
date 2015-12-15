@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" type="text/css" href="__PLUGINS__bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="__CSS__Home/index.css">
+    <script type="text/javascript" src="__PLUGINS__jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="__PLUGINS__bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="__JS__Home/index.js"></script>
+    <title>汽车市场</title>
+</head>
+<body>
+
+<div id="content">
+    <!--搜索-->
+    <div style="width:80%; height:40px; top:20px; left:10%; position:fixed; z-index:100;">
+				<span style="float:left;">
+					<img class="img-rounded" src="__IMAGES__Images/logo.png">
+				</span>
+				<span style="float:left; margin-left:12%;">
+					<form class="form-inline" action="__MODULE__/index/find" method="post"
+                          enctype="multipart/form-data">
+                        <input type="text" class="form-control" style="width:250px;" id="text" name="name"/>
+                        <input type="text" class="form-control" style="width:120px;display:none;" id="text1"
+                               name="name1"/><span style="font-size:25px; display:none;" id="span">~</span>
+                        <input type="text" class="form-control" style="width:120px;display:none;" id="text2"
+                               name="name2"/>
+                        <select name="type" class="form-control" id="type">
+                            <option value="effect">品牌</option>
+                            <option value="price">价格(万)</option>
+                            <option value="type">车型</option>
+                            <option value="car_num">月销量(辆)</option>
+                        </select>
+                        <input type="submit" class="btn btn-warning" id="find" value="查找"/>
+                    </form>
+				</span>
+				<span style="float:right; top:20px; right:10%; position:fixed;">
+					<a href="__MODULE__/user/login" style="font-size:30px;">{$user_login}</a>
+					<a href="__MODULE__/user/logout" style="font-size:30px;">注销</a>
+				</span>
+    </div>
+    <div id="carousel-example-generic" class="carousel slide show" data-ride="carousel" data-interval="3000">
+        <ol class="carousel-indicators">
+            <li data-target="#carousel-example-generic" data-slide-to="0"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="5"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="item active">
+                <img src="__IMAGES__Images/show1.jpg">
+            </div>
+            <foreach name="show_img" item="vo">
+                <div class="item">
+                    <img src="__IMAGES__{$vo.image}">
+                </div>
+            </foreach>
+
+
+            <!-- <volist name="show_img" id="vo">
+                <div class="item active">
+                    <img src="__IMAGES__{$vo.image}">
+                </div>
+            </volist> -->
+
+        </div>
+        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+    </div>
+    <div id="nav" style="height:50px; background:#0ff; margin-top:20px;" class="panel panel-default">
+        <ul>
+            <li class="nav" style="margin-left:5%;">品牌<br/>
+
+                <div>
+                    <ol style="margin-left:-5px;" class="panel panel-default">
+                        <li id="baoma">宝马</li>
+                        <li id="benchi">奔驰</li>
+                        <li id="laoshilaishi">劳斯莱斯</li>
+                    </ol>
+                </div>
+            </li>
+            <li class="nav" style="width:25%;height:10px;"></li>
+            <li class="nav">价格
+                <div>
+                    <ol style="margin-left:-5px;" class="panel panel-default">
+                        <li>20-50万</li>
+                        <li>50-100万</li>
+                        <li>100万以上</li>
+                    </ol>
+                </div>
+            </li>
+            <li class="nav" style="width:25%;height:10px;"></li>
+            <li class="nav">销售量</li>
+        </ul>
+    </div>
+    <div id="carshow">
+        <div style="margin-top:115px;" id="baomashow">
+            <foreach name="baoma" item="vo">
+                <a href="__MODULE__/index/info?id={$vo.id}&effect={$vo.effect}&type={$vo.type}">
+                    <div style="width:33%; height:170px; float:left;">
+								<span style="width:210px; height:120px; float:left;">
+									<img class="img-rounded" src="__IMAGES__{$vo.image}">
+									<div style="display:block;">
+                                        <h3><B>{$vo.type}<br/>价格:{$vo.price}万</B></h3>
+                                    </div>
+								</span>
+								<span style="width:100px;height:80px; float:left; margin:20px;">
+									<div style="width:100px; height:80px;">
+                                        {$vo.intro}
+                                    </div>
+									<div style="display:block;line-height:30px; margin-top:30px;">
+                                        <B>月销量:{$vo.car_num}</B>
+                                    </div>
+								</span>
+                    </div>
+                </a>
+            </foreach>
+        </div>
+        <div style="margin-top:115px; display:none;" id="benchishow">
+            <foreach name="benchi" item="vo">
+                <a href="__MODULE__/index/info?id={$vo.id}&effect={$vo.effect}&type={$vo.type}">
+                    <div style="width:33%; height:170px; float:left;">
+								<span style="width:210px; height:120px; float:left;">
+									<img class="img-rounded" src="__IMAGES__{$vo.image}">
+									<div style="display:block;">
+                                        <h3><B>{$vo.type}<br/>价格:{$vo.price}万</B></h3>
+                                    </div>
+								</span>
+								<span style="width:100px;height:80px; float:left; margin:20px;">
+									<div style="width:100px; height:80px;">
+                                        {$vo.intro}
+                                    </div>
+									<div style="display:block;line-height:30px; margin-top:30px;">
+                                        <B>月销量:{$vo.car_num}</B>
+                                    </div>
+								</span>
+                    </div>
+                </a>
+            </foreach>
+        </div>
+        <div style="margin-top:115px; display:none;" id="show">
+            <foreach name="laoshilaishi" item="vo">
+                <a href="__MODULE__/index/info?id={$vo.id}&effect={$vo.effect}&type={$vo.type}">
+                    <div style="width:33%; height:170px; float:left;">
+								<span style="width:210px; height:120px; float:left;">
+									<img class="img-rounded" src="__IMAGES__{$vo.image}">
+									<div style="display:block;">
+                                        <h3><B>{$vo.type}<br/>价格:{$vo.price}万</B></h3>
+                                    </div>
+								</span>
+								<span style="width:100px;height:80px; float:left; margin:20px;">
+									<div style="width:100px; height:80px;">
+                                        {$vo.intro}
+                                    </div>
+									<div style="display:block;line-height:30px; margin-top:30px;">
+                                        <B>月销量:{$vo.car_num}</B>
+                                    </div>
+								</span>
+                    </div>
+                </a>
+            </foreach>
+        </div>
+    </div>
+    <iframe src="__APP__/Home/index/stern"></iframe>
+</div>
+</body>
+</html>

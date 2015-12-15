@@ -1,0 +1,112 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+}
+/*--------模块--------*/
+body{
+    background-color: #288DC3;
+}
+#header {
+    width: 99%;
+    height: 120px;
+    background-color: #EDF2F5;
+    margin: 5px auto;
+    border-radius: 8px;
+}
+#left {
+    width: 15%;
+    min-height: 500px;
+    float: left;
+}
+#common {
+    width: 84%;
+    min-height: 500px;
+    background-color: #fff;
+    border-radius: 8px;
+    float: right;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+#foot {
+    width: 100%;
+    line-height: 50px;
+    background: -ms-linear-gradient(top,blue,#fff);                     /*IE*/
+    background: -webkit-linear-gradient(top,#004059,#aaa);             /*谷歌浏览器颜色渐变*/
+    background: -o-linear-gradient(top,blue,#fff);                     /*欧朋*/
+    background: -moz-linear-gradient(top,blue,#fff);                   /*火狐*/
+}
+/*---------头------------*/
+a {
+    color: #333;
+    text-decoration: none;
+}
+a:hover {
+    color: #a00;
+    text-decoration: none;
+}
+#head {
+    width: 80%;
+    margin: 0px auto;
+}
+#img {
+    float: left;
+    line-height: 110px;
+}
+#title {
+    float: left;
+    margin-left: 10%;
+    margin-top: 15px;
+    font-family:'楷体';
+}
+#ad {
+    float: right;
+    margin-right: 8%;
+    line-height: 50px;
+    font-size: 20px;
+    line-height: 110px;
+}
+/*---------导航(左)------------*/
+#nav {
+    margin-left: 25px;
+}
+
+#nav a {
+    font-size: 20px;
+    text-decoration: none;
+}
+#nav a:hover {
+    text-decoration: none;
+}
+#nav ul {
+    margin-top: 20%;
+}
+#nav li {
+    list-style-type: none;
+    width: 200px;
+    font-size: 25px;
+    line-height: 35px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+#nav ul li {
+    border-radius: 8px;
+    background: #daf;
+    margin-top: 10px;
+    width: 160px;
+}
+#nav ol li {
+    margin-left: 25px;
+    background: #0ff;
+}
+#nav ul li span{
+    color: #000;
+    font-size: 20px;
+}
+
+/*分页总记录数*/
+.rows{
+    margin-left: 5px;
+    line-height: 40px;
+    font-size: 20px;
+}
